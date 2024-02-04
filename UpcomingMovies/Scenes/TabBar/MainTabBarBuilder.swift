@@ -12,7 +12,6 @@ import UpcomingMoviesDomain
 struct RootCoordinatorIdentifier {
     static let upcomingMovies = "upcoming"
     static let searchMovies = "search"
-    static let account = "account"
 }
 
 final class MainTabBarBuilder {
@@ -28,14 +27,9 @@ final class MainTabBarBuilder {
         let searchMoviesCoordinator = SearchMoviesCoordinator(navigationController: searchMoviesNavigationController)
         searchMoviesCoordinator.start(coordinatorMode: .push)
 
-        let accountNavigationController = createNavigationController(title: "Account", image: #imageLiteral(resourceName: "Account"))
-        let accountCoordinator = AccountCoordinator(navigationController: accountNavigationController)
-        accountCoordinator.start()
-
         return [
             upcomingMoviesCoordinator,
-            searchMoviesCoordinator,
-            accountCoordinator
+            searchMoviesCoordinator
         ]
     }
 
