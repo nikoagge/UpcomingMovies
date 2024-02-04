@@ -7,13 +7,10 @@
 //
 
 enum UpcomingMoviesPresentationMode: Int {
-    case preview
     case detail
 
     var cellIdentifier: String {
         switch self {
-        case .preview:
-            return UpcomingMoviePreviewCollectionViewCell.dequeueIdentifier
         case .detail:
             return UpcomingMovieExpandedCollectionViewCell.dequeueIdentifier
         }

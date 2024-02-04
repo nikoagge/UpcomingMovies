@@ -15,7 +15,7 @@ final class UserPreferencesHandler: UserPreferencesHandlerProtocol {
 
     var upcomingMoviesPresentationMode: UpcomingMoviesPresentationMode {
         get {
-            UpcomingMoviesPresentationMode(rawValue: upcomingMoviesPresentationModeRawValue) ?? .preview
+            UpcomingMoviesPresentationMode(rawValue: upcomingMoviesPresentationModeRawValue) ?? .detail
         }
         set {
             upcomingMoviesPresentationModeRawValue = newValue.rawValue

@@ -25,10 +25,8 @@ final class UpcomingMoviesFactory: UpcomingMoviesFactoryProtocol {
                                                 accessibilityLabel: LocalizedStrings.collapseMovieCellsHint())
 
         switch presentationMode {
-        case .preview:
-            return [preview, detail]
         case .detail:
-            return [detail, preview]
+            return [detail]
         }
     }
 

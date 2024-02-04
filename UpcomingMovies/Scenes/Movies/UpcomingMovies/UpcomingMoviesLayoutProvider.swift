@@ -15,11 +15,6 @@ struct UpcomingMoviesLayoutProvider: UpcomingMoviesLayoutProviderProtocol {
         case .detail:
             let detailLayoutWidth = collectionViewWidth - Constants.detailCellOffset
             return VerticalFlowLayout(preferredWidth: detailLayoutWidth, preferredHeight: Constants.detailCellHeight)
-        case .preview:
-            let previewLayoutWidth = Constants.previewCellHeight / CGFloat(UIConstants.posterAspectRatio)
-            return VerticalFlowLayout(preferredWidth: previewLayoutWidth,
-                                      preferredHeight: Constants.previewCellHeight,
-                                      minColumns: Constants.previewLayoutMinColumns)
         }
     }
 
@@ -30,7 +25,7 @@ struct UpcomingMoviesLayoutProvider: UpcomingMoviesLayoutProviderProtocol {
         static let detailCellHeight: CGFloat = 200.0
         static let detailCellOffset: CGFloat = 32.0
 
-        static let previewLayoutMinColumns: Int = 3
+        static let previewLayoutMinColumns: Int = 1
 
     }
 

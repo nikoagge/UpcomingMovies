@@ -85,10 +85,10 @@ final class UpcomingMoviesViewController: UIViewController, Storyboarded, Loadin
 
     private func setupCollectionViewLayout() {
         guard let viewModel, let layoutProvider else { return }
-        let presentationMode = viewModel.currentPresentationMode
+//        let presentationMode = viewModel.currentPresentationMode
         let collectionViewWidth = collectionView.frame.width
 
-        collectionView.collectionViewLayout = layoutProvider.collectionViewLayout(for: presentationMode, and: collectionViewWidth)
+        collectionView.collectionViewLayout = layoutProvider.collectionViewLayout(for: .detail, and: collectionViewWidth)
     }
 
     private func setupRefreshControl() {

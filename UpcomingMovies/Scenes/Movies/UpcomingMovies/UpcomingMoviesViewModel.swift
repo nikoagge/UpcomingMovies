@@ -70,14 +70,6 @@ final class UpcomingMoviesViewModel: UpcomingMoviesViewModelProtocol, SimpleView
     }
 
     func updatePresentationMode() {
-        switch currentPresentationMode {
-        case .preview:
-            userPreferencesHandler.upcomingMoviesPresentationMode = .detail
-            didUpdatePresentationMode.send(.detail)
-        case .detail:
-            userPreferencesHandler.upcomingMoviesPresentationMode = .preview
-            didUpdatePresentationMode.send(.preview)
-        }
     }
 
     // MARK: - Private
