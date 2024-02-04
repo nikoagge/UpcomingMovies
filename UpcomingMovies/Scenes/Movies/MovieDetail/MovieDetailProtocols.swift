@@ -113,8 +113,7 @@ protocol MovieDetailCoordinatorProtocol: AnyObject {
 }
 
 protocol MovieDetailUIHelperProtocol {
-
-    func showHUD(with text: String, in view: UIView)
+    func showSkeleton(in view: UIView)
 
     func showLoader(in view: UIView)
     func hideLoader()

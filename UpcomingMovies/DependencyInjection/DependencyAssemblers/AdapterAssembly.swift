@@ -11,8 +11,8 @@ import Swinject
 final class AdapterAssembly: Assembly {
 
     func assemble(container: Container) {
-        container.register(ProgressHUDAdapterProtocol.self) { _ in
-            ProgressHUDAdapter()
+        container.register(SkeletonProgressAdapterProtocol.self) { _ in
+            SkeletonProgressAdapter()
         }
     }
 

@@ -173,7 +173,7 @@ final class MovieDetailViewController: UIViewController, Storyboarded, Transitio
     private func setupAlertBindables() {
         viewModel?.showSuccessAlert.bind({ [weak self] message in
             guard let self else { return }
-            self.userInterfaceHelper?.showHUD(with: message, in: self.view)
+            self.userInterfaceHelper?.showSkeleton(in: self.view)
         }, on: .main)
 
         viewModel?.showErrorAlert.bind({ [weak self] error in

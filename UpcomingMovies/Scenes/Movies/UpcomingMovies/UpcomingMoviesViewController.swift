@@ -8,6 +8,7 @@
 
 import UIKit
 import UpcomingMoviesDomain
+import SkeletonView
 
 final class UpcomingMoviesViewController: UIViewController, Storyboarded, LoadingDisplayable, PlaceholderDisplayable, TransitionableInitiator {
 
@@ -75,6 +76,8 @@ final class UpcomingMoviesViewController: UIViewController, Storyboarded, Loadin
     }
 
     private func setupCollectionView() {
+        collectionView.isSkeletonable = true
+        
         collectionView.delegate = self
 
         collectionView.registerNib(cellType: UpcomingMoviePreviewCollectionViewCell.self)
@@ -156,7 +159,7 @@ final class UpcomingMoviesViewController: UIViewController, Storyboarded, Loadin
 
         viewModel?.startLoading.bind({ [weak self] startLoading in
             guard let self = self else { return }
-            startLoading ? self.showLoader() : self.hideLoader()
+            startLoading ? self.collectionView.showSkeleton(usingColor: .wetAsphalt, transition: .crossDissolve(0.25)) : self.collectionView.hideSkeleton()
         }, on: .main)
 
         viewModel?.didUpdatePresentationMode.bind({ [weak self] presentationMode in

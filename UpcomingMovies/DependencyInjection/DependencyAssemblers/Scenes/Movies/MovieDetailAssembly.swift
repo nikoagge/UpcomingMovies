@@ -53,10 +53,10 @@ final class MovieDetailAssembly: Assembly {
         }
 
         container.register(MovieDetailUIHelperProtocol.self) { resolver in
-            guard let progressHUDAdapter = resolver.resolve(ProgressHUDAdapterProtocol.self) else {
+            guard let skeletonProgressAdapter = resolver.resolve(SkeletonProgressAdapterProtocol.self) else {
                 fatalError("ProgressHUDAdapterProtocol dependency could not be resolved")
             }
-            return MovieDetailUIHelper(progressHUDAdapter: progressHUDAdapter)
+            return MovieDetailUIHelper(skeletonProgressAdapter: skeletonProgressAdapter)
         }
 
         // MARK: - Movie detail poster

@@ -6,25 +6,17 @@
 //  Copyright © 2022 Alonso. All rights reserved.
 //
 
-import DLProgressHUD
+import SkeletonView
 
-final class ProgressHUDAdapter: ProgressHUDAdapterProtocol {
-
-    func showHUDWithOnlyText(_ text: String) {
-        configureHUDWithOnlyText()
-        DLProgressHUD.show(.textOnly(text))
+final class SkeletonProgressAdapter: SkeletonProgressAdapterProtocol {
+    func showSkeletonLoading(in view: UIView) {
+        view.isSkeletonable = true
+        let gradient = SkeletonGradient(baseColor: .clouds)
+        let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+        view.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
     }
 
-    func showHUDWithOnlyText(_ text: String, in view: UIView) {
-        configureHUDWithOnlyText()
-        DLProgressHUD.show(.textOnly(text), in: view)
+    func hideSkeletonLoading(in view: UIView) {
+        view.hideSkeleton()
     }
-
-    private func configureHUDWithOnlyText() {
-        DLProgressHUD.defaultConfiguration.allowsDynamicTextWidth = true
-        DLProgressHUD.defaultConfiguration.shouldDismissAutomatically = true
-        DLProgressHUD.defaultConfiguration.backgroundInteractionEnabled = true
-        DLProgressHUD.defaultConfiguration.hudContentPreferredHeight = 64.0
-    }
-
 }

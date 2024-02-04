@@ -8,9 +8,7 @@
 
 import UIKit
 
-protocol ProgressHUDAdapterProtocol {
-
-    func showHUDWithOnlyText(_ text: String)
-    func showHUDWithOnlyText(_ text: String, in view: UIView)
-
+protocol SkeletonProgressAdapterProtocol {
+    func showSkeletonLoading(in view: UIView)
+    func hideSkeletonLoading(in view: UIView)
 }

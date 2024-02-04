@@ -10,7 +10,7 @@ import UIKit
 
 final class MovieDetailUIHelper: MovieDetailUIHelperProtocol, LoadingDisplayable, Retryable {
 
-    private let progressHUDAdapter: ProgressHUDAdapterProtocol
+    private let skeletonProgressAdapter: SkeletonProgressAdapterProtocol
 
     // MARK: - LoadingDisplayable
 
@@ -18,14 +18,11 @@ final class MovieDetailUIHelper: MovieDetailUIHelperProtocol, LoadingDisplayable
 
     // MARK: - Initializers
 
-    init(progressHUDAdapter: ProgressHUDAdapterProtocol) {
-        self.progressHUDAdapter = progressHUDAdapter
+    init(skeletonProgressAdapter: SkeletonProgressAdapterProtocol) {
+        self.skeletonProgressAdapter = skeletonProgressAdapter
     }
 
-    // MARK: - MovieDetailUIHelperProtocol
-
-    func showHUD(with text: String, in view: UIView) {
-        progressHUDAdapter.showHUDWithOnlyText(text, in: view)
+    func showSkeleton(in view: UIView) {
+        skeletonProgressAdapter.showSkeletonLoading(in: view)
     }
-
 }

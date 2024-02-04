@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import SkeletonView
 
-final class SimpleCollectionViewDataSource<ViewModel>: NSObject, UICollectionViewDataSource {
-
+final class SimpleCollectionViewDataSource<ViewModel>: NSObject, UICollectionViewDataSource, SkeletonCollectionViewDataSource {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+        return UpcomingMovieExpandedCollectionViewCell.dequeueIdentifier
+    }
     typealias CellConfigurator = (ViewModel, UICollectionViewCell) -> Void
 
     private let reuseIdentifier: String
