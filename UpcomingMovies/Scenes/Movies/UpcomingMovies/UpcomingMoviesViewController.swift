@@ -77,12 +77,8 @@ final class UpcomingMoviesViewController: UIViewController, Storyboarded, Loadin
 
     private func setupCollectionView() {
         collectionView.isSkeletonable = true
-        
         collectionView.delegate = self
-
-        collectionView.registerNib(cellType: UpcomingMoviePreviewCollectionViewCell.self)
         collectionView.registerNib(cellType: UpcomingMovieExpandedCollectionViewCell.self)
-
         setupCollectionViewLayout()
     }
 
