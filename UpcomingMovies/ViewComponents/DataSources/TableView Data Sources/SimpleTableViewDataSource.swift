@@ -80,17 +80,3 @@ extension SimpleTableViewDataSource where ViewModel == MovieReviewCellViewModelP
     }
 
 }
-
-extension SimpleTableViewDataSource where ViewModel == CustomListCellViewModelProtocol {
-
-    static func make(for cellViewModels: [ViewModel],
-                     reuseIdentifier: String = CustomListTableViewCell.dequeueIdentifier) -> SimpleTableViewDataSource {
-        SimpleTableViewDataSource(cellViewModels: cellViewModels,
-                                  reuseIdentifier: reuseIdentifier,
-                                  cellConfigurator: { (viewModel, cell) in
-                                    let cell = cell as! CustomListTableViewCell
-                                    cell.viewModel = viewModel
-                                  })
-    }
-
-}

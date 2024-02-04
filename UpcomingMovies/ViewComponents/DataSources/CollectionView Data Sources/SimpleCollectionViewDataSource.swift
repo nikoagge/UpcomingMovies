@@ -66,17 +66,3 @@ extension SimpleCollectionViewDataSource where ViewModel == MovieCreditCellViewM
     }
 
 }
-
-extension SimpleCollectionViewDataSource where ViewModel == SavedMovieCellViewModelProtocol {
-
-    static func make(for cellViewModels: [ViewModel],
-                     reuseIdentifier: String = SavedMovieCollectionViewCell.dequeueIdentifier) -> SimpleCollectionViewDataSource {
-        SimpleCollectionViewDataSource(cellViewModels: cellViewModels,
-                                       reuseIdentifier: reuseIdentifier,
-                                       cellConfigurator: { (viewModel, cell) in
-                                        let cell = cell as! SavedMovieCollectionViewCell
-                                        cell.viewModel = viewModel
-                                       })
-    }
-
-}
