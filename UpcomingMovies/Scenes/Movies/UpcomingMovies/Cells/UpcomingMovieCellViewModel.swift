@@ -15,21 +15,22 @@ protocol UpcomingMovieCellViewModelProtocol {
     var releaseDate: String? { get }
     var posterURL: URL? { get }
     var backdropURL: URL? { get }
+    var voteAverage: Double? { get }
 
 }
 
 final class UpcomingMovieCellViewModel: UpcomingMovieCellViewModelProtocol {
-
     let title: String
     let releaseDate: String?
     let posterURL: URL?
     let backdropURL: URL?
+    let voteAverage: Double?
 
     init(_ movie: Movie) {
         title = movie.title
         releaseDate = movie.releaseDate
         posterURL = movie.posterURL
         backdropURL = movie.backdropURL
+        voteAverage = movie.voteAverage
     }
-
 }

@@ -48,7 +48,7 @@ protocol UpcomingMoviesNavigationDelegate: UINavigationControllerDelegate {
 
     var parentCoordinator: Coordinator? { get set }
 
-    func configure(selectedFrame: CGRect?, with imageToTransition: UIImage?)
+    func configure(selectedFrame: CGRect?)
     func updateOffset(_ verticalSafeAreaOffset: CGFloat)
 
 }

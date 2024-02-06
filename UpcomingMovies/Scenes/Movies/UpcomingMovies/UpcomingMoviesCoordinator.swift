@@ -12,12 +12,10 @@ import UpcomingMoviesDomain
 struct UpcomingMoviesNavigationConfiguration {
 
     let selectedFrame: CGRect
-    let imageToTransition: UIImage?
     let transitionOffset: CGFloat
 
-    init(selectedFrame: CGRect, imageToTransition: UIImage?, transitionOffset: CGFloat) {
+    init(selectedFrame: CGRect, transitionOffset: CGFloat) {
         self.selectedFrame = selectedFrame
-        self.imageToTransition = imageToTransition
         self.transitionOffset = transitionOffset
     }
 
@@ -70,8 +68,7 @@ final class UpcomingMoviesCoordinator: BaseCoordinator, UpcomingMoviesCoordinato
     private func configureNavigationDelegate(with navigationConfiguration: UpcomingMoviesNavigationConfiguration) {
         setupNavigationControllerDelegate()
 
-        navigationDelegate?.configure(selectedFrame: navigationConfiguration.selectedFrame,
-                                      with: navigationConfiguration.imageToTransition)
+        navigationDelegate?.configure(selectedFrame: navigationConfiguration.selectedFrame)
         navigationDelegate?.updateOffset(navigationConfiguration.transitionOffset)
     }
 

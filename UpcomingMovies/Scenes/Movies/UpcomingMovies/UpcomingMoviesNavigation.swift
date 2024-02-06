@@ -13,7 +13,6 @@ final class UpcomingMoviesNavigation: NSObject, UpcomingMoviesNavigationDelegate
     private var transitionInteractor: TransitioningInteractor?
     private var verticalSafeAreaOffset: CGFloat
     private var selectedFrame: CGRect?
-    private var imageToTransition: UIImage?
 
     weak var parentCoordinator: Coordinator?
 
@@ -25,9 +24,8 @@ final class UpcomingMoviesNavigation: NSObject, UpcomingMoviesNavigationDelegate
 
     // MARK: - Internal
 
-    func configure(selectedFrame: CGRect?, with imageToTransition: UIImage?) {
+    func configure(selectedFrame: CGRect?) {
         self.selectedFrame = selectedFrame
-        self.imageToTransition = imageToTransition
     }
 
     func updateOffset(_ verticalSafeAreaOffset: CGFloat) {
@@ -59,19 +57,15 @@ final class UpcomingMoviesNavigation: NSObject, UpcomingMoviesNavigationDelegate
         guard let frame = selectedFrame else { return nil }
         guard isTransitionableNavigation(between: fromVC, and: toVC, on: operation) else { return nil }
 
-        let transitionView = UIImageView(image: imageToTransition)
-        transitionView.contentMode = .scaleAspectFit
         switch operation {
         case .push:
             transitionInteractor = TransitioningInteractor(attachTo: toVC)
             return TransitioningAnimator(isPresenting: true,
                                          originFrame: frame,
-                                         transitionView: transitionView,
                                          verticalSafeAreaOffset: verticalSafeAreaOffset)
         case .pop, .none:
             return TransitioningAnimator(isPresenting: false,
-                                         originFrame: frame,
-                                         transitionView: transitionView)
+                                         originFrame: frame)
         @unknown default:
             return nil
         }

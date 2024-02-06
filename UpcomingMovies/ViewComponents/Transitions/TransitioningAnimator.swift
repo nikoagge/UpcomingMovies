@@ -13,7 +13,6 @@ class TransitioningAnimator: NSObject {
     private let duration: TimeInterval
     private let isPresenting: Bool
     private let originFrame: CGRect
-    private let transitionView: UIView
     private let verticalSafeAreaOffset: CGFloat
 
     // MARK: - Initializers
@@ -21,12 +20,10 @@ class TransitioningAnimator: NSObject {
     init(duration: TimeInterval = 0.3,
          isPresenting: Bool,
          originFrame: CGRect,
-         transitionView: UIView,
          verticalSafeAreaOffset: CGFloat = 0.0) {
         self.duration = duration
         self.isPresenting = isPresenting
         self.originFrame = originFrame
-        self.transitionView = transitionView
         self.verticalSafeAreaOffset = verticalSafeAreaOffset
         super.init()
     }
@@ -70,23 +67,19 @@ extension TransitioningAnimator: UIViewControllerAnimatedTransitioning {
         transitionContainerViewFrame.origin.x += verticalSafeAreaOffset
 
         transitionContainerView.alpha = 0.0
-        transitionView.frame = isPresenting ? originFrame : transitionContainerViewFrame
 
-        container.addSubview(transitionView)
 
         toView.frame = isPresenting ? CGRect(x: fromView.frame.width, y: 0, width: toView.frame.width, height: toView.frame.height) : toView.frame
         toView.alpha = isPresenting ? 0 : 1
         toView.layoutIfNeeded()
 
         UIView.animate(withDuration: duration, animations: {
-            self.transitionView.frame = self.isPresenting ? transitionContainerViewFrame : self.originFrame
             transitionableView.frame = self.isPresenting ? fromView.frame : CGRect(x: toView.frame.width,
                                                                                    y: 0, width: toView.frame.width,
                                                                                    height: toView.frame.height)
             transitionableView.alpha = self.isPresenting ? 1 : 0
         }, completion: { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-            self.transitionView.removeFromSuperview()
             transitionContainerView.alpha = 1
         })
     }

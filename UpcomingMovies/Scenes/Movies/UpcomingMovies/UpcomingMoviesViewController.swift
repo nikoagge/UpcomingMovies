@@ -195,14 +195,13 @@ extension UpcomingMoviesViewController: UICollectionViewDelegate {
               let cell = collectionView.cellForItem(at: indexPath) as? UpcomingMovieCollectionViewCellProtocol else {
             return
         }
-
-        let imageToTransition = cell.posterImageView.image
+        
         let selectedFrame = collectionView.convert(cellAttributes.frame,
                                                    to: collectionView.superview)
 
-        let navigationConfiguration = UpcomingMoviesNavigationConfiguration(selectedFrame: selectedFrame,
-                                                                            imageToTransition: imageToTransition,
-                                                                            transitionOffset: view.safeAreaInsets.left)
+        let navigationConfiguration = UpcomingMoviesNavigationConfiguration(
+            selectedFrame: selectedFrame,
+            transitionOffset: view.safeAreaInsets.left)
 
         if let movieToShow = viewModel?.movie(for: indexPath.row) {
             coordinator?.showMovieDetail(for: movieToShow, with: navigationConfiguration)
