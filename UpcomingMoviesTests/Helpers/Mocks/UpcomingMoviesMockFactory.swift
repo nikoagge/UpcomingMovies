@@ -32,6 +32,9 @@ final class MockUpcomingMoviesFactory: UpcomingMoviesFactoryProtocol {
 }
 
 final class MockUpcomingMoviesNavigationDelegate: NSObject, UpcomingMoviesNavigationDelegate {
+    func configure(selectedFrame: CGRect?) {
+    }
+    
 
     var parentCoordinator: Coordinator?
 

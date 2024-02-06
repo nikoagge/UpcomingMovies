@@ -10,6 +10,6 @@
 
 final class MockUserPreferencesHandler: UserPreferencesHandlerProtocol {
 
-    var upcomingMoviesPresentationMode: UpcomingMoviesPresentationMode = .preview
+    var upcomingMoviesPresentationMode: UpcomingMoviesPresentationMode = .detail
 
 }

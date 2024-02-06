@@ -9,8 +9,8 @@
 import UIKit
 
 class StarRatingView: UIView {
-    private var starRating: Double = 0.0
-    private var starViews: [UIImageView] = []
+    var starRating: Double = 0.0
+    var starViews: [UIImageView] = []
 
     init(frame: CGRect, starRating: Double) {
         super.init(frame: frame)
@@ -32,17 +32,20 @@ class StarRatingView: UIView {
     }
     
     func updateStarRating(starRating: Double) {
-        self.starRating = starRating
+        // Round the rating to the nearest 0.5
+        let roundedRating = (starRating * 2).rounded() / 2
+
         for (index, imageView) in starViews.enumerated() {
-            if Double(index) < starRating {
-                imageView.image = UIImage(systemName: "star.fill")
-            } else if Double(index) < starRating + 0.5 {
-                imageView.image = UIImage(systemName: "star.leadinghalf.fill")
+            if Double(index) + 0.5 == roundedRating {
+                imageView.image = UIImage(systemName: "star.leadinghalf.fill") // For half-filled star
+            } else if Double(index) < roundedRating {
+                imageView.image = UIImage(systemName: "star.fill") // For fully filled stars
             } else {
-                imageView.image = UIImage(systemName: "star")
+                imageView.image = UIImage(systemName: "star") // For empty stars
             }
         }
     }
+
     
     private func setupStars() {
         for _ in 0..<5 {
